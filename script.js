@@ -8,6 +8,7 @@ class Application {
         this.canvas.height = window.innerHeight;
         this.canvas.style.backgroundColor = "rgb(37, 37, 37)";
         this.ctx.fillStyle = "rgb(37, 37, 37)";
+        this.resultShowcaseDiv = document.querySelector(".resultShowcase");
 
 
         this.worker = null;
@@ -65,7 +66,16 @@ class Application {
 
 
 
-        console.log(ret.data.text);
+        let data = ret.data.text;
+
+        try {
+            console.log(data);
+            let text = eval(data);
+            console.log(text);
+            this.resultShowcaseDiv.innerHTML = text;
+        } catch (err) {
+            console.log(err);
+        };
 
         // Tesseract.recognize(
         //     dataURL
